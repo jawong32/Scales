@@ -1,11 +1,13 @@
 void setup() {
   size(800, 800);
-  fill(255, 0, 0);
   strokeWeight(5);
+  colorMode(HSB, 400);
+  noLoop();
 }
 
 void draw() {
-  for (int i= 0; i < 3; i++) {
+  gradient();
+  for (int i= 0; i < 1; i++) {
     for (int j = 0; j < 3; j++) {
       feather(j, i);
     }
@@ -13,9 +15,38 @@ void draw() {
   printCoordinates();
 }
 
+void gradient() {
+     fill(12, 88, 56 + 0);
+    ellipse(0, 0, 100, 100);
+  for (int i = 0; i < 50; i++) {
+ 
+    line(0, 800 - i, 0 + i, 800);
+  }
+}
+
+void randomColor() {
+  switch ((int) (Math.random() * 5)) {
+    case 0: 
+      fill(100, 0, 0);
+      break;
+    case 1:
+      fill(255, 0, 0);
+      break;
+    case 2:
+      fill(255, 20, 20);
+      break;
+    case 3: 
+      fill(200, 100,50);
+      break;
+    case 4: 
+      fill(240,230,140);
+  }
+}
+
 void feather(int x, int y) {
-  x *= 290;
+  x *= 120;
   y *= 0;
+  randomColor();
   beginShape();
   vertex(60+x, 650);
   bezierVertex(70+x, 725, 60+x, 750, 20+x, 770);
