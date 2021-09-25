@@ -1,5 +1,5 @@
 void setup() {
-  size(800, 800);
+  size(810, 760);
   strokeWeight(5);
   stroke(255);
   colorMode(HSB, 400);
@@ -8,8 +8,8 @@ void setup() {
 
 void draw() {
   gradient();
-  for (int i= 0; i < 1; i++) {
-    for (int j = 0; j < 3; j++) {
+  for (int i= 0; i < 20; i++) {
+    for (int j = 0; j < 4; j++) {
       feather(j, i);
     }
   }
@@ -17,38 +17,36 @@ void draw() {
 }
 
 void gradient() {
-  /*fill(160, 120, 200);  
-  ellipse(0, 0, 100, 100);
-  fill(200, 120, 400);
-  ellipse(100, 100, 100, 100);*/
-  for (int i = 0; i < 800; i++) {
-    stroke(90, 120, 20 + i/2);
+  int i;
+  for (i = 0; i < 800; i++) {
+    stroke(150, 120, 100 + i / 4);
     line(0, 800-i, 0+i, 800);
   }
-  for (int i = 0; i < 800; i++) {
-    stroke(60, 30, 400 - i/2 + 20);
-    line(0+i, 0, 800, 800-i);
-  }   
+  for (; i < 1600; i++) {
+    stroke(150, 120, 100 + i / 4);
+    line(-800+i, 0, 800, 1600-i);
+  }
 }
 
 void randomGreen() {
-  fill((int) (Math.random() * 41 + 160), 120, (int) (Math.random() * 250));
+  fill((int) (Math.random() * 41 + 160), 120, (int) (Math.random() * 250) + 50);
 }
 
 void feather(int x, int y) {
-  x *= 120;
-  y *= 0;
+  x *= 270;
+  y *= -130;
+  stroke(400);
   randomGreen();
   beginShape();
-  vertex(60+x, 650);
-  bezierVertex(70+x, 725, 60+x, 750, 20+x, 770);
-  bezierVertex(65+x, 750, 120+x, 700, 120+x, 700);
-  bezierVertex(110+x, 750, 115+x, 760, 155+x, 780);
-  bezierVertex(200+x, 760, 195+x, 750, 190+x, 700);
-  bezierVertex(235+x, 750, 290+x, 770, 290+x, 770);
-  bezierVertex(250+x, 750, 240+x, 725, 250+x, 650);
-  bezierVertex(200+x, 600, 190+x, 700, 155+x, 560);
-  bezierVertex(105+x, 700, 115+x, 600, 60+x, 650);
+  vertex(-95+x, 650+y);
+  bezierVertex(-85+x, 725+y, -95+x, 750+y, -135+x, 770+y);
+  bezierVertex(-90+x, 750+y, -35+x, 700+y, -35+x, 700+y);
+  bezierVertex(-45+x, 750+y, -40+x, 760+y, 0+x, 780+y);
+  bezierVertex(45+x, 760+y, 40+x, 750+y, 35+x, 700+y);
+  bezierVertex(80+x, 750+y, 135+x, 770+y, 135+x, 770+y);
+  bezierVertex(95+x, 750+y, 85+x, 725+y, 95+x, 650+y);
+  bezierVertex(45+x, 600+y, 35+x, 700+y, 0+x, 560+y);
+  bezierVertex(-50+x, 700+y, -40+x, 600+y, -95+x, 650+y);
   endShape();
 }
 
